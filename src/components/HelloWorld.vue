@@ -5,16 +5,32 @@ defineProps({
     required: true
   }
 })
+
+import { ref, onMounted } from 'vue'
+import axios from 'axios'
+
+const responseData = ref(null)
+const errorMessage = ref(null)
+
+onMounted(async () => {
+  try {
+    const response = await axios.get('http://127.0.0.1:8000/api/v1/welcome')
+    responseData.value = response.data
+  } catch (error) {
+    errorMessage.value = error.message
+  }
+})
 </script>
 
 <template>
   <div class="greetings">
     <h1 class="green">{{ msg }}</h1>
-    <h3>
-      You’ve successfully created a project with
-      <a href="https://vitejs.dev/" target="_blank" rel="noopener">Vite</a> +
-      <a href="https://vuejs.org/" target="_blank" rel="noopener">Vue 3</a>.
-    </h3>
+  </div>
+  <div v-if="responseData">
+    <h2>{{ responseData }}</h2>
+  </div>
+  <div v-if="errorMessage">
+    <p>{{ errorMessage }}</p>
   </div>
 </template>
 
