@@ -2,21 +2,80 @@
 
 #app {
   max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+  margin: 0;
+  padding: 0;
   font-weight: normal;
 }
 
-a,
-.green {
+a {
   text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
+  color: #00bd7e;
   transition: 0.4s;
-  padding: 3px;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.deleteButton {
+  color: #00bd7e;
+  transition: 0.4s;
+  padding: 10px;
+  background-color: transparent;
+  border-radius: 10px;
+  border: none;
+}
+
+.green {
+  color: #00bd7e;
+}
+
+th {
+  font-weight: bold;
+}
+
+th, td {
+  width: 200px;
+  text-align: center;
+  height: 40px;
+}
+
+.actions_cells {
+  width: 250px;
+}
+
+nav {
+  width: 100vw;
+  padding: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+
+main {
+  width: 100vw;
+  padding: 30px;
+}
+
+h1 {
+  padding-left: 30px;
+  margin: 30px;
+  border-left: 5px solid #00bd7e;
+}
+
+.add_form_link {
+  display: flex;
+  justify-content: end;
+}
+
+.add_form_link a, .confirm_button {
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+  color: white;
+  background-color: #00bd7e;
+  margin: 10px;
 }
 
 @media (hover: hover) {
-  a:hover {
+  a:hover, .confirm_button:hover, .deleteButton:hover {
     background-color: hsla(160, 100%, 37%, 0.2);
   }
 }

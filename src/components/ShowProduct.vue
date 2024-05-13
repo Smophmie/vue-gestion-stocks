@@ -22,19 +22,17 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div>
-    <h1 class="green">Mon produit</h1>
-  </div>
+
   <div v-if="responseData">
-        <p>{{ responseData.name }}</p>
-        <p>Tarif : {{ responseData.price }}</p>
-        <p>Stock : {{ responseData.stock }}</p>
-        <p v-if="responseData.categories && responseData.categories.length > 0">
-          Catégorie(s) :
-          <span v-for="category in responseData.categories">
-            {{ category }}
-          </span> 
-        </p>   
+    <h1 class="green">{{responseData.name}}</h1>
+    <p>Tarif : {{ responseData.price }}</p>
+    <p>Stock : {{ responseData.stock }}</p>
+    <p v-if="responseData.categories && responseData.categories.length > 0">
+      Catégorie(s) :
+      <span v-for="category in responseData.categories">
+        {{ category }}
+      </span> 
+    </p>   
 
   </div>
   <div v-if="errorMessage">
