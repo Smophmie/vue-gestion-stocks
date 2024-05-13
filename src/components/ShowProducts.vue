@@ -2,9 +2,13 @@
 
 import { ref, onMounted } from 'vue'
 import axios from 'axios'
+import { useRoute, useRouter } from 'vue-router'
+
 
 const responseData = ref(null)
 const errorMessage = ref(null)
+const router = useRouter()
+
 
 onMounted(async () => {
   try {
@@ -18,6 +22,7 @@ onMounted(async () => {
 
 const deleteProduct = async(id) => {
   await axios.delete('http://127.0.0.1:8000/api/v1/products/'+id)
+  router.push({name:"welcome"})
 }
 </script>
 

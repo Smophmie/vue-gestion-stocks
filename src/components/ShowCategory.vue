@@ -2,12 +2,13 @@
 
 import { ref, onMounted } from 'vue'
 import axios from 'axios'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 
 const responseData = ref(null)
 const errorMessage = ref(null)
 
 const route = useRoute()
+const router = useRouter()
 
 onMounted(async () => {
   try {
@@ -19,6 +20,11 @@ onMounted(async () => {
     errorMessage.value = error.message
   }
 })
+
+const deleteCategory = async(id) => {
+  await axios.delete('http://127.0.0.1:8000/api/v1/categories/'+id)
+  router.push({name:"showcategories"})
+}
 </script>
 
 <template>
@@ -27,12 +33,7 @@ onMounted(async () => {
   </div>
   <div v-if="responseData">
         <p>{{ responseData.title }}</p>
-        <!-- <p v-if="responseData.categories && responseData.categories.length > 0">
-          Catégorie(s) :
-          <span v-for="category in responseData.categories">
-            {{ category }}
-          </span> 
-        </p>    -->
+        <button @click="deleteCategory(responseData.id)" class="deleteButton">Supprimer</button>
 
   </div>
   <div v-if="errorMessage">

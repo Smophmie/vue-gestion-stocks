@@ -13,9 +13,9 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes:[
     { path: '/', name:"welcome", component: Welcome },
-    { path: '/products', component: ShowProducts },
+    { path: '/products', name:"showproducts", component: ShowProducts },
     { path: '/products/:id', component: ShowProduct },
-    { path: '/categories', component: ShowCategories },
+    { path: '/categories', name:"showcategories", component: ShowCategories },
     { path: '/categories/:id', component: ShowCategory },
     { path: '/categories/create', component: CreateCategory }
 
