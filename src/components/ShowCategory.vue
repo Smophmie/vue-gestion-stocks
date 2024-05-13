@@ -28,11 +28,9 @@ const deleteCategory = async(id) => {
 </script>
 
 <template>
-  <div>
-    <h1 class="green">Ma catégorie</h1>
-  </div>
   <div v-if="responseData">
-        <p>{{ responseData.title }}</p>
+        <h1 class="green">{{ responseData.title }}</h1>
+        <p>{{ responseData.description }}</p>
         <button @click="deleteCategory(responseData.id)" class="deleteButton">Supprimer</button>
 
   </div>

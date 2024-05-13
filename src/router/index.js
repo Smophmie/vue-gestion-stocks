@@ -14,10 +14,10 @@ const router = createRouter({
   routes:[
     { path: '/', name:"welcome", component: Welcome },
     { path: '/products', name:"showproducts", component: ShowProducts },
-    { path: '/products/:id', component: ShowProduct },
+    { path: '/products/:id', name:"showproduct", component: ShowProduct },
     { path: '/categories', name:"showcategories", component: ShowCategories },
-    { path: '/categories/:id', component: ShowCategory },
-    { path: '/categories/create', component: CreateCategory }
+    { path: '/categories/:id', name:"showcategory", component: ShowCategory },
+    { path: '/categories/create', name:"createcategory", component: CreateCategory }
 
   ],
 })
