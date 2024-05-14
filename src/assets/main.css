@@ -38,7 +38,7 @@ th, td {
   height: 40px;
 }
 
-.actions_cells {
+.actions_cell, .categories_cell {
   width: 250px;
 }
 
@@ -46,7 +46,7 @@ nav {
   width: 100vw;
   padding: 30px;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
 }
 
 main {
@@ -63,6 +63,13 @@ h1 {
 .add_form_link {
   display: flex;
   justify-content: end;
+}
+
+.form_part {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  width: 300px;
 }
 
 .add_form_link a, .confirm_button {

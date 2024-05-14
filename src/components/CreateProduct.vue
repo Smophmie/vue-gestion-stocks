@@ -69,16 +69,9 @@ const createProduct = async () => {
 
 <style scoped>
 
-.form_part {
-  display: flex;
-  flex-direction: column;
-  margin-top: 10px;
-  width: 300px;
-}
-
 .checkboxContainer {
   display: flex;
-  font-display: row;
+  flex-direction: row;
   gap: 10px;
 }
 

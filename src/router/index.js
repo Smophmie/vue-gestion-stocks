@@ -7,6 +7,7 @@ import CreateProduct from '../components/CreateProduct.vue'
 import ShowCategories from '../components/ShowCategories.vue'
 import ShowCategory from '../components/ShowCategory.vue'
 import CreateCategory from '../components/CreateCategory.vue'
+import UpdateCategory from '../components/UpdateCategory.vue'
 
 
 
@@ -19,6 +20,7 @@ const router = createRouter({
     { path: '/products/create', name:"createproduct", component: CreateProduct },
     { path: '/categories', name:"showcategories", component: ShowCategories },
     { path: '/categories/:id', name:"showcategory", component: ShowCategory },
+    { path: '/categories/update/:id', name:"updatecategory", component: UpdateCategory },
     { path: '/categories/create', name:"createcategory", component: CreateCategory }
 
   ],

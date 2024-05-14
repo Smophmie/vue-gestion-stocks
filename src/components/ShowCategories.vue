@@ -9,7 +9,7 @@ const errorMessage = ref(null)
 const router = useRouter()
 
 
-onMounted(async () => {
+async function getCategories() {
   try {
     const response = await axios.get('http://127.0.0.1:8000/api/v1/categories')
     responseData.value = response.data
@@ -17,12 +17,16 @@ onMounted(async () => {
   } catch (error) {
     errorMessage.value = error.message
   }
-})
+}
+
+onMounted(getCategories)
 
 const deleteCategory = async(id) => {
   await axios.delete('http://127.0.0.1:8000/api/v1/categories/'+id)
-  router.push({name:"welcome"})
+  getCategories();
 }
+
+
 </script>
 
 <template>
@@ -41,8 +45,9 @@ const deleteCategory = async(id) => {
       </thead>
       <tbody v-for="Data in responseData">
         <th>{{ Data.title }}</th>
-        <td class="actions_cells">
-          <RouterLink :to="'/categories/' + Data.id">Voir la catégorie</RouterLink>
+        <td class="actions_cell">
+          <RouterLink :to="{ name: 'showcategory', params: { id : Data.id }}">Voir</RouterLink>
+          <RouterLink :to="{ name: 'updatecategory', params: { id : Data.id }}">Modifier</RouterLink>
           <button @click="deleteCategory(Data.id)" class="deleteButton">Supprimer</button>
         </td>
       </tbody>

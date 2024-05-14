@@ -10,7 +10,7 @@ const errorMessage = ref(null)
 const router = useRouter()
 
 
-onMounted(async () => {
+async function getProducts(){
   try {
     const response = await axios.get('http://127.0.0.1:8000/api/v1/products')
     responseData.value = response.data
@@ -18,11 +18,13 @@ onMounted(async () => {
   } catch (error) {
     errorMessage.value = error.message
   }
-})
+}
+
+onMounted(getProducts)
 
 const deleteProduct = async(id) => {
   await axios.delete('http://127.0.0.1:8000/api/v1/products/'+id)
-  router.push({name:"welcome"})
+  getProducts();
 }
 </script>
 
@@ -41,7 +43,7 @@ const deleteProduct = async(id) => {
           <th>Prix</th>
           <th>Quantité</th>
           <th>Catégorie(s)</th>
-          <th class="actions_cells"></th>
+          <th class="actions_cell"></th>
         </tr>
       </thead>
       <tbody>
@@ -49,12 +51,12 @@ const deleteProduct = async(id) => {
           <th>{{ Data.name }}</th>
           <td>{{ Data.price }}€</td>
           <td>{{ Data.stock }}</td>
-          <td>
+          <td class="categories_cell">
             <span v-for="category in Data.categories">
               {{ category }}
             </span> 
           </td>
-          <td class="actions_cells">
+          <td class="actions_cell">
             <RouterLink :to="'/products/' + Data.id">Voir</RouterLink>
             <RouterLink :to="'/products/update/' + Data.id">Modifier</RouterLink>
             <button @click="deleteProduct(Data.id)" class="deleteButton">Supprimer</button>
@@ -69,5 +71,12 @@ const deleteProduct = async(id) => {
 </template>
 
 <style scoped>
+
+.categories_cell {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
 
 </style>
