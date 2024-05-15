@@ -7,8 +7,8 @@
       <RouterLink to="/">Accueil</RouterLink>
       <RouterLink to="/products">Produits</RouterLink>
       <RouterLink to="/categories">Catégories</RouterLink>    
-      <RouterLink to="/login">Connexion</RouterLink>
-      <RouterLink to="/register">Créer un compte</RouterLink> 
+      <!-- <RouterLink to="/login">Connexion</RouterLink>
+      <RouterLink to="/register">Créer un compte</RouterLink>  -->
     </nav>
   </header>
     
