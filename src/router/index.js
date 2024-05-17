@@ -2,6 +2,9 @@ import { createWebHistory, createRouter } from 'vue-router'
 
 import Welcome from '../components/Welcome.vue'
 
+import Login from '../components/Login.vue'
+
+
 import ShowProducts from '../components/ShowProducts.vue'
 import ShowProduct from '../components/ShowProduct.vue'
 import CreateProduct from '../components/CreateProduct.vue'
@@ -18,8 +21,11 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes:[
     { path: '/', name:"welcome", component: Welcome },
-    
-    { path: '/products', name:"showproducts", component: ShowProducts },
+
+    { path: '/login', name:"Login", component: Login },
+
+
+    { path: '/products', name:"showproducts", component: ShowProducts, beforeEnter: authGuard },
     { path: '/products/:id', name:"showproduct", component: ShowProduct },
     { path: '/products/update/:id', name:"updateproduct", component: UpdateProduct },
     { path: '/products/create', name:"createproduct", component: CreateProduct },
@@ -31,5 +37,16 @@ const router = createRouter({
 
   ],
 })
+
+function authGuard(to){
+  let token = localStorage.getItem('token')
+  console.log(token)
+
+  if(token){
+      return true
+  } else {
+    next({name:"Login"})
+}   
+}
 
 export default router

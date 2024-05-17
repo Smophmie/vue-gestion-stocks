@@ -68,7 +68,7 @@ h1 {
 .form_part {
   display: flex;
   flex-direction: column;
-  margin-top: 10px;
+  margin: 10px 0;
   width: 300px;
 }
 
